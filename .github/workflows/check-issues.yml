@@ -17,4 +17,4 @@ jobs:
         with:
           SENHA: '123456'
       - name: Check output
-        run: echo '${{ steps.tracking.outputs.actioncloud-badge }}'
+        run: echo 'Será ${{ steps.tracking.outputs.Repo }} ?'

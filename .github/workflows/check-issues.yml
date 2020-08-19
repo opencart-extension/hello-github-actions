@@ -1,7 +1,7 @@
 name: Verificas as issues
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   build:

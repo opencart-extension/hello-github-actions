@@ -4,7 +4,8 @@ description: Verifica uma issues
 inputs:
   token:
     description: Token de acesso
-    required: true
+  SENHA:
+    description: 'A senha'
     
 outputs:
   Repo:

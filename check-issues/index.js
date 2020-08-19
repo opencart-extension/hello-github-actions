@@ -7,4 +7,6 @@ core.setOutput('number', '123456789')
 
 module.exports = (':/')
 
+console.log('Tristonho!')
+
 return 'Poxa...'

@@ -13,8 +13,9 @@ jobs:
       - name: 'Setup node'
         uses: actions/setup-node@v1
       - name: 'Check Issue'
+        id: checkIssue
         uses: ./check-issues
         with:
           SENHA: '123456'
       - name: Check output
-        run: echo 'Será ${{ steps.tracking.outputs.Repo }} ?'
+        run: echo 'Será ${{ steps.checkIssue.outputs.Repo }} ?'

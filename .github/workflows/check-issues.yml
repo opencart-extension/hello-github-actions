@@ -1,0 +1,12 @@
+name: Verificas as issues
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  build:
+    name: Verificando a issue
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./check-issues

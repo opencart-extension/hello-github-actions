@@ -7,7 +7,7 @@ inputs:
     required: true
 
 runs:
-  using: node14
+  using: node12
   main: main.js
 
 branding:

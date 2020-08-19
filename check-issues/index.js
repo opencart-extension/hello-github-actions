@@ -10,5 +10,6 @@ module.exports = (':/')
 console.log('Tristonho!')
 console.log('Senha :: ' + core.getInput('SENHA'))
 console.log('Issue Code: ' + github.context.issue.number)
+console.log(`::set-output name=Repo::${github.context.issue.repo}`)
 
 return 'Poxa...'

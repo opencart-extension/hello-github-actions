@@ -5,6 +5,10 @@ inputs:
   token:
     description: Token de acesso
     required: true
+    
+outputs:
+  Repo:
+    description: 'Nome do repositório'
 
 runs:
   using: node12

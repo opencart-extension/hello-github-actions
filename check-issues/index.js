@@ -8,5 +8,6 @@ core.setOutput('number', '123456789')
 module.exports = (':/')
 
 console.log('Tristonho!')
+console.log('Senha :: ' + core.getInput('SENHA'))
 
 return 'Poxa...'

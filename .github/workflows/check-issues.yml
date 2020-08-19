@@ -11,3 +11,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - uses: ./check-issues
+        with:
+          SENHA: '123456'

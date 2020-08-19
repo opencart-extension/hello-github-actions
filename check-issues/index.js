@@ -9,5 +9,6 @@ module.exports = (':/')
 
 console.log('Tristonho!')
 console.log('Senha :: ' + core.getInput('SENHA'))
+console.log('Issue Code: ' + github.context.issue.number)
 
 return 'Poxa...'

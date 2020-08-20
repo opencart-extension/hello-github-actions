@@ -16,8 +16,7 @@ jobs:
 
             - name: Check file
               run: |
-                  wget -O composer-setup.php https://getcomposer.org/installer
-                  php composer-setup.php --install-dir=/
+                  wget -qO- composer-setup.php https://getcomposer.org/installer | php -- composer-setup.php
                   composer --version
                   
             - name: PHPUnit Install

@@ -15,4 +15,4 @@ jobs:
                   MY_NAME: "Valdeir Psr"
 
             - name: Check file
-              run: ls -lah /entrypoint.sh
+              run: echo $INPUT_MY_NAME

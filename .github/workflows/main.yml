@@ -15,4 +15,13 @@ jobs:
                   MY_NAME: "Valdeir Psr"
 
             - name: Check file
-              run: echo $INPUT_MY_NAME
+              run: |
+                  wget -O composer-setup.php https://getcomposer.org/installer
+                  php composer-setup.php --install-dir=/
+                  composer --version
+                  
+            - name: PHPUnit Install
+              run: composer require phpunit/phpunit
+              
+            - name: PHPUnit Version
+              run: php vendor/bin/phpunit --version

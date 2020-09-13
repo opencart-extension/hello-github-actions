@@ -55,7 +55,7 @@ echo "==> Starting deploying"
 
 git add .
 git commit -m 'Auto deploy from Github Actions'
-git push --force $DEPLOY_REPO documentation:$DEPLOY_BRAN
+git push --force $DEPLOY_REPO master:$DEPLOY_BRAN
 rm -fr .git
 
 cd $GITHUB_WORKSPACE

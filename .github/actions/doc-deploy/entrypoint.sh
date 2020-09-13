@@ -20,6 +20,13 @@ else
   REPOSITORY_NAME="$TARGET_REPO"
 fi
 
+# Get branch
+if [[ -z "$TARGET_BRANCH" ]]; then
+  DEPLOY_BRAN="gh-pages"
+else
+  DEPLOY_BRAN="$TARGET_BRANCH"
+fi
+
 # Final repository
 DEPLOY_REPO="https://${ACCESS_TOKEN}@github.com/${REPOSITORY_NAME}.git"
 if [ "$TARGET_LINK" ]; then
@@ -46,13 +53,12 @@ fi
 
 echo "==> Starting deploying"
 
-git add -A
+git add .
 git commit -m 'Auto deploy from Github Actions'
-git push --force --delete $DEPLOY_REPO ${BRANCH_TO:-gh-pages}
-git push --force $DEPLOY_REPO ${BRANCH_FROM:-master}:${BRANCH_TO:-gh-pages}
+git push --force $DEPLOY_REPO documentation:$DEPLOY_BRAN
 rm -fr .git
 
 cd $GITHUB_WORKSPACE
 
 echo "Successfully deployed!" && \
-echo "See: https://github.com/$REPOSITORY_NAME/tree/${BRANCH_TO:-gh-pages}"
+echo "See: https://github.com/$REPOSITORY_NAME/tree/$DEPLOY_BRAN"

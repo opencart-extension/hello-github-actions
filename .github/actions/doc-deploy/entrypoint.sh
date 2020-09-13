@@ -13,6 +13,9 @@ DEPLOY_REPO="https://${ACCESS_TOKEN}@github.com/${REPOSITORY_NAME}.git"
 echo "CMD: git checkout gh-pages"
 git checkout -b gh-pages
 
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
 echo "CMD: rm -rf *"
 rm -rf *
 

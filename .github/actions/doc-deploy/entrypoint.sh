@@ -46,8 +46,9 @@ fi
 
 echo "==> Starting deploying"
 
-git add .
+git add -A
 git commit -m 'Auto deploy from Github Actions'
+git push --force --delete $DEPLOY_REPO ${BRANCH_TO:-gh-pages}
 git push --force $DEPLOY_REPO ${BRANCH_FROM:-master}:${BRANCH_TO:-gh-pages}
 rm -fr .git
 

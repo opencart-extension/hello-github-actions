@@ -1,0 +1,29 @@
+name: Generate Doc
+on: 
+  push:
+    branches:
+      - documentation
+
+jobs:
+  generate_doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
+      
+      - name: Install Dependencies
+        run: npm Install
+
+      - name: Generate Doc
+        run: npm run docs:build
+
+      - name: Deploy Doc
+        run: |
+            cd .vuepress/dist
+            git init
+            git add -A
+            git commit -m "chore: Deploy site"
+            git push -f origin master:gh-pages

@@ -4,35 +4,61 @@ set -e
 
 echo '' # see https://github.com/actions/toolkit/issues/168
 
-echo "CMD: npm install && npm run build"
-npm install && npm run build
+# Build vuepress project
+echo "==> Start building \n $BUILD_SCRIPT"
+eval "$BUILD_SCRIPT"
+echo "Build success"
 
-echo "CMD: Set DEPLOY_REPO"
+# Change directory to the dest
+echo "==> Changing directory to '$BUILD_DIR' ..."
+cd $BUILD_DIR
+
+# Get respository
+if [[ -z "$TARGET_REPO" ]]; then
+  REPOSITORY_NAME="${GITHUB_REPOSITORY}"
+else
+  REPOSITORY_NAME="$TARGET_REPO"
+fi
+
+# Get branch
+if [[ -z "$TARGET_BRANCH" ]]; then
+  DEPLOY_BRAN="gh-pages"
+else
+  DEPLOY_BRAN="$TARGET_BRANCH"
+fi
+
+# Final repository
 DEPLOY_REPO="https://${ACCESS_TOKEN}@github.com/${REPOSITORY_NAME}.git"
+if [ "$TARGET_LINK" ]; then
+  DEPLOY_REPO="$TARGET_LINK"
+fi
 
-echo "CMD: git checkout gh-pages"
-git checkout -b gh-pages
+echo "==> Prepare to deploy"
 
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
+git init
+git config user.name "${GITHUB_ACTOR}"
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-echo "CMD: rm -rf *"
-rm -rf *
+if [ -z "$(git status --porcelain)" ]; then
+    echo "The BUILD_DIR is setting error or nothing produced" && \
+    echo "Exiting..."
+    exit 0
+fi
 
-echo "CMD: git add -A"
-git add -A
+# Generate a CNAME file
+if [ "$CNAME" ]; then
+  echo "Generating a CNAME file..."
+  echo $CNAME > CNAME
+fi
 
-echo "CMD: git commit Remove files"
-git commit -m "Remove files"
+echo "==> Starting deploying"
 
-echo "CMD: git checkout documentation -- src/.vuepress/dist"
-git checkout documentation -- src/.vuepress/dist
+git add .
+git commit -m 'Auto deploy from Github Actions'
+git push --force $DEPLOY_REPO documentation:$DEPLOY_BRAN
+rm -fr .git
 
-echo "CMD: git add -A"
-git add -A
+cd $GITHUB_WORKSPACE
 
-echo "CMD: git commit Auto deploy"
-git commit -m "Auto deploy"
-
-echo "CMD: git push"
-git push -f $DEPLOY_REPO gh-pages
+echo "Successfully deployed!" && \
+echo "See: https://github.com/$REPOSITORY_NAME/tree/$DEPLOY_BRAN"

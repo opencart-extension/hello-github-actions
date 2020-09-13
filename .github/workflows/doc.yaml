@@ -13,18 +13,11 @@ jobs:
         with:
             ref: gh-pages
         
-      - name: Setup NodeJS
-        uses: actions/setup-node@v1
-      
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Generate Doc
-        run: npm run build
-
-      - name: Deploy Doc
-        run: |
-            git checkout documentation -- ./src/.vuepress/dist
-            git add -A
-            git commit -m "chore: Deploy"
-            git push
+      - name: Deploy
+        uses: ./.github/actions/doc-deploy
+        env:
+            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+            BRANCH_FROM: documentation
+            BRANCH_TO: gh-pages
+            BUILD_SCRIPT: yarn && yarn build
+            BUILD_DIR: src/.vuepress/dist/

@@ -18,7 +18,7 @@ jobs:
         run: npm install
 
       - name: Generate Doc
-        run: npm run docs:build
+        run: npm run build
 
       - name: Deploy Doc
         run: |

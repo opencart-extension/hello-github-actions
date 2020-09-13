@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy Doc
         run: |
-            cd .vuepress/dist
+            cd ./src/.vuepress/dist
             git init
             git add -A
             git commit -m "chore: Deploy site"

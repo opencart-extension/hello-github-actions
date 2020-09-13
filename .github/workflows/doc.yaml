@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+            ref: gh-pages
         
       - name: Setup NodeJS
         uses: actions/setup-node@v1
@@ -22,7 +24,6 @@ jobs:
 
       - name: Deploy Doc
         run: |
-            git checkout gh-pages
             git checkout documentation -- ./src/.vuepress/dist
             git add -A
             git commit -m "chore: Deploy"

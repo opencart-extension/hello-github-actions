@@ -4,23 +4,32 @@ set -e
 
 echo '' # see https://github.com/actions/toolkit/issues/168
 
-echo "npm install && npm run build"
+echo "CMD: npm install && npm run build"
 npm install && npm run build
 
-echo "Set DEPLOY_REPO"
+echo "CMD: Set DEPLOY_REPO"
 DEPLOY_REPO="https://${ACCESS_TOKEN}@github.com/${REPOSITORY_NAME}.git"
 
-echo "git checkout gh-pages"
-git checkout gh-pages
+echo "CMD: git checkout gh-pages"
+git checkout -b gh-pages
 
-echo "git checkout documentation -- src/.vuepress/dist"
-git checkout documentation -- src/.vuepress/dist
+echo "CMD: rm -rf *"
+rm -rf *
 
-echo "git add -A"
+echo "CMD: git add -A"
 git add -A
 
-echo "git commit"
+echo "CMD: git commit Remove files"
+git commit -m "Remove files"
+
+echo "CMD: git checkout documentation -- src/.vuepress/dist"
+git checkout documentation -- src/.vuepress/dist
+
+echo "CMD: git add -A"
+git add -A
+
+echo "CMD: git commit Auto deploy"
 git commit -m "Auto deploy"
 
-echo "git push"
+echo "CMD: git push"
 git push -f $DEPLOY_REPO gh-pages

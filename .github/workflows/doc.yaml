@@ -15,6 +15,7 @@ jobs:
 
       - name: Deploy Doc
         run: |
+            mkdir -p ./src/.vuepress/dist/file.txt
             echo "PSR Test" > ./src/.vuepress/dist/file.txt
             git init
             git remote add origin https://github.com/${{ github.repository }}.git

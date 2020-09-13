@@ -18,7 +18,6 @@ jobs:
             mkdir -p ./src/.vuepress/dist
             echo "PSR Test" > ./src/.vuepress/dist/file.txt
             git init
-            git remote add origin https://github.com/${{ github.repository }}.git
             git config user.name github-actions
             git config user.email github-actions@github.com
             git add -A

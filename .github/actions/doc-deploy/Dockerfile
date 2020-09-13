@@ -12,4 +12,5 @@ LABEL "maintainer"="Jenkey2011 <jenkey2011@163.com>"
 RUN apk add git jq
 
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

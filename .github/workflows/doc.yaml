@@ -28,4 +28,4 @@ jobs:
             git config user.email github-actions@github.com
             git add -A
             git commit -m "chore: Deploy site"
-            git push -f origin master:gh-pages
+            git push -f git@github.com:opencart-extension/hello-github-actions.git master:gh-pages

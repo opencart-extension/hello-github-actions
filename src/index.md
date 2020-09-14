@@ -5,11 +5,11 @@ tagline:
 actionText: Quick Start →
 actionLink: /guide/
 features:
-- title: Feature 1 Title
+- title: Open-Source
   details: Feature 1 Description
-- title: Feature 2 Title
+- title: Simplicity First
   details: Feature 2 Description
-- title: Feature 3 Title
+- title: Extensible
   details: Feature 3 Description
 footer: Made by  with ❤️
 ---

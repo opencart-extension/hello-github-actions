@@ -24,7 +24,7 @@ module.exports = {
   /**
    * Base
    */
-  base: '/hello-github-actions',
+  base: '/hello-github-actions/',
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.

@@ -3,7 +3,6 @@ on:
   pull_request:
     branches:
       - master
-    types: [synchronize]
 
 jobs:
   build:
@@ -11,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Print'
-        run: "echo Syncronizada"
+        run: "echo Event Name ${{ GITHUB_EVENT_NAME }}"

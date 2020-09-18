@@ -1,0 +1,13 @@
+name: 'Only Test'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  running:
+    name: 'Running Tests'
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Test
+        run: echo This it first test

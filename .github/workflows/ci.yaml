@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Zip Files
-        run: zip --junk-paths -r extension.ocmod.zip .
+        run: zip -r extension.ocmod.zip action-a check-issues *.md
 
       - name: Create Release
         id: create_release
@@ -30,7 +30,7 @@ jobs:
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./extension.ocmod.zip

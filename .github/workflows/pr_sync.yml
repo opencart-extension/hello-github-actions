@@ -1,12 +1,13 @@
-name: 'Test PR Sync'
-on: [pull_request]
+name: Test PR
+on: pull_request
 
 jobs:
-  build:
-    name: 'Test PR Sync'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: 'Print'
-        run: "echo Event Name $GITHUB_EVENT_NAME"
+    build:
+        name: Hello world action
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v1
+        
+            - name: Action Dockerfile
+              run: echo $GITHUB_EVENT_NAME

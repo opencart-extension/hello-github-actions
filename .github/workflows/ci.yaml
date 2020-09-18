@@ -23,7 +23,7 @@ jobs:
           npx conventional-changelog-cli -p angular -o LOG_PSR_2.md
           git add LOG_PSR.md LOG_PSR_2.md
           git commit -m "chore: autogeração do changelog"
-          git push
+          git push origin HEAD:master
 
   new_release:
     name: New Release

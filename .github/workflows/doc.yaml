@@ -1,0 +1,21 @@
+name: Generate Doc
+on: 
+  push:
+    branches:
+      - documentation
+
+jobs:
+  generate_doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
+        
+      - name: "Gen Doc"
+        run: |
+          npm install
+          npm run docs:build
+          git push origin documentation:gh-pages

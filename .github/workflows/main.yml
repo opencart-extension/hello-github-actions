@@ -6,7 +6,21 @@ jobs:
         name: Hello world action
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1
-            - uses: ./action-a
+            - name: Checkout
+              uses: actions/checkout@v1
+              
+            - name: Action Dockerfile
+              uses: ./action-a
               with:
                   MY_NAME: "Valdeir Psr"
+
+            - name: Check file
+              run: |
+                  wget -qO- composer-setup.php https://getcomposer.org/installer | php -- composer-setup.php
+                  composer --version
+                  
+            - name: PHPUnit Install
+              run: composer require phpunit/phpunit
+              
+            - name: PHPUnit Version
+              run: php vendor/bin/phpunit --version

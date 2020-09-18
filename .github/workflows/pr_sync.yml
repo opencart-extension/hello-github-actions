@@ -1,0 +1,13 @@
+name: Test PR
+on: 
+    pull_request:
+        branches: 
+            - master
+
+jobs:
+    build:
+        name: Test PR
+        runs-on: ubuntu-latest
+        steps:        
+            - name: Action Dockerfile
+              run: echo $GITHUB_EVENT_NAME

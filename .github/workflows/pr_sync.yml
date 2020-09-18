@@ -1,0 +1,14 @@
+name: 'Test PR Sync'
+on:
+  pull_request:
+    branches:
+      - master
+    types: [synchronize]
+
+jobs:
+  build:
+    name: 'Test PR Sync'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Print'
+        run: "echo Syncronizada"

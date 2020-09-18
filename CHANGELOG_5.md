@@ -1,4 +1,4 @@
-##  (2020-09-17)
+###  (2020-09-17)
 
 * feat: add novos changelog ([3ff8f0d](https://github.com/opencart-extension/hello-github-actions/commit/3ff8f0d))
 * feat: adiciona Dockerfile ao ramo first-actions ([dd2a83e](https://github.com/opencart-extension/hello-github-actions/commit/dd2a83e))

@@ -13,6 +13,9 @@ jobs:
         
       - name: Setup NodeJS
         uses: actions/setup-node@v1
-        run: npm install
-        run: npm run docs:build
-        run: git push origin documentation:gh-pages
+        
+      - name: "Gen Doc"
+        run: |
+          npm install
+          npm run docs:build
+          git push origin documentation:gh-pages

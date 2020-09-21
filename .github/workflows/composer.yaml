@@ -1,0 +1,29 @@
+name: Composer
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Running Composer
+    steps:
+      - name: Change folder
+        run: cd comp
+
+      - name: Install Composer
+        run: wget -qO- https://getcomposer.org/installer | php
+
+      - name: Install dependencies
+        run: php composer.phar install
+
+      - name: Run tests
+        run: vendor/bin/phpunit --bootstrap vendor/autoload.php
+
+      - name: Back to root folder
+        run: |
+          cd ..
+          echo "Valdeir Psr" > Comp.txt
+          git config user.email actions@github.com
+          git config user.name Github Actions
+          git add .
+          git commit -m "feat: add composer text"
+          git push

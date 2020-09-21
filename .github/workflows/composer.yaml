@@ -29,7 +29,6 @@ jobs:
 
       - name: Back to root folder
         run: |
-          cd ..
           echo "Valdeir Psr" > Comp.txt
           git config user.email actions@github.com
           git config user.name Github Actions

@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Running Composer
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Change folder
         run: cd comp
 

@@ -23,7 +23,9 @@ jobs:
           php composer.phar install
 
       - name: Run tests
-        run: vendor/bin/phpunit --bootstrap vendor/autoload.php
+        run: |
+          cp comp
+          vendor/bin/phpunit --bootstrap vendor/autoload.php
 
       - name: Back to root folder
         run: |

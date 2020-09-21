@@ -13,7 +13,9 @@ jobs:
         run: cd comp
 
       - name: Install Composer
-        run: wget -qO- https://getcomposer.org/installer | php
+        run: |
+          cd comp
+          wget -qO- https://getcomposer.org/installer | php
 
       - name: Install dependencies
         run: |

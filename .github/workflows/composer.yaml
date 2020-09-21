@@ -24,7 +24,7 @@ jobs:
 
       - name: Run tests
         run: |
-          cp comp
+          cd comp
           vendor/bin/phpunit --bootstrap vendor/autoload.php
 
       - name: Back to root folder

@@ -16,7 +16,9 @@ jobs:
         run: wget -qO- https://getcomposer.org/installer | php
 
       - name: Install dependencies
-        run: php composer.phar install
+        run: |
+          cd comp
+          php composer.phar install
 
       - name: Run tests
         run: vendor/bin/phpunit --bootstrap vendor/autoload.php

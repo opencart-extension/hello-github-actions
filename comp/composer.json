@@ -1,0 +1,15 @@
+{
+    "name": "valdeirpsr/comp",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fuz Naval",
+            "email": "naval.psr@gmail.com"
+        }
+    ],
+    "require": {}
+}
